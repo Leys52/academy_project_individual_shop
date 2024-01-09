@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Document</title>
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/slide.css">
+<link rel="stylesheet" href="css/contents.css">
+<link rel="stylesheet" href="css/footer.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+	
+	    // 슬라이드 보이기/숨기기 처리
+	    $('.slide_list>li').last().prependTo('.slide_list'); // prependTo() : 선택한 타겟 처음 위치에 새로운 요소를 추가하는 jquery 메서드
+	    $('.slide_list').css('top', -300);
+	    setInterval(function () {
+	        $('.slide_list').animate({ top: '-=' + 300 }, 'slow', function () {
+	            $('.slide_list>li').first().appendTo('.slide_list');
+	            $('.slide_list').css('top', -300);
+	        });
+	    }, 2000);
+	
+		// 탭메뉴
+	    $('.notice_gall h3').click(function(){
+	        let index = $(this).index();
+	        $(this).addClass('on').siblings().removeClass('on');
+	        $(this).parents().next().children().eq(index).addClass('block').siblings().removeClass('block');
+	    });
+
+		// 배너 초기에 GIF 이미지 숨기기
+    	$('.con_box.banner img.banner_gif').hide();
+		
+		// 마우스 진입 이벤트
+		$(document).on('mouseenter', '.banner', function(){    
+			// 이미지 감추기
+                $(this).find('img').hide();
+                // 썸네일 이미지를 gif 이미지로 변경
+                $(this).find('.banner_gif').show();
+		    });
+		
+		 // 마우스 아웃 이벤트
+		 $(document).on('mouseleave', '.banner', function(){
+	        // gif 이미지 숨기고 JPG 이미지 보이기
+	        $(this).find('img').show();
+	        $(this).find('.banner_gif').hide();
+		});
+		
+		
+	});
+			
+   
+</script>
+</head>
+<body>
+    <div class="wrap">
+    
+    	<header>
+		    <h1>
+		        <a id= "header_a" href="shop.html"><img src="image/logo.jpg" alt="la_spordiva"></a>
+		    </h1>
+		
+			<nav>
+			    <ul class="gnb">
+			    
+			        <li>
+			        	<a href="brand/nav_brand.html">브랜드</a>
+			        </li>
+			        
+			        <li>
+			        	<a href="brand/nav_brand.html">아우터상의</a>
+			        </li>
+			        
+			        <li>
+			        	<a href="brand/nav_brand.html">하의</a>
+			        </li>
+			        
+			        <li>
+			        	<a href="brand/nav_brand.html">액세서리</a>
+			        </li>
+			        
+			    </ul>
+			</nav>
+		</header>
+        
+        
+		<div class="slide">
+			<div id="slide">
+				<div id="slide-container">
+					<ul class="slide_list">
+					    <li>
+					        <p></p>
+					        <a href="https://www.justone.co.kr/"><img src="image/banner1.jpg" alt="slide_img1" width="100%" height="300px"></a>
+					    </li>
+					    <li>
+					        <p></p>
+					        <a href="https://www.justone.co.kr/"><img src="image/banner2.jpg" alt="slide_img2" width="100%" height="300px"></a>
+					    </li>
+					    <li>
+					        <p></p>
+					        <a href="https://www.justone.co.kr/"><img src="image/banner3.jpg" alt="slide_img3" width="100%" height="300px"></a>
+					    </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="contents">
+			<section id="contents" class="cf">
+			    <div class="con_box notice_gall">
+			        <div class="tab_tit">
+			            <h3 class="on"><a href="#">공지사항</a></h3>
+			            <h3 class="button2"><a href="#">갤러리</a></h3>
+			        </div>
+			        <div class="tab_con">
+			        
+		                <ul class="notice_list block on">
+		                    <li><a href="#">[공지] 홈페이지 리메이크 안내&nbsp;&nbsp;<span>2024-01-04</span></a></li>
+		                    <li><a href="#">[공지] 배송 시간 변경사항 안내&nbsp;&nbsp;<span>2023-12-22</span></a></li>
+		                    <li><a href="#">[공지] 카카오페이 사용가능 안내&nbsp;&nbsp;<span>2023-11-19</span></a></li>
+		                    <li><a href="#">[공지] 연말 적립 기간 안내&nbsp;&nbsp;<span>2023-11-14</span></a></li>
+		                    <li><a href="#">[공지] 대리 구매 사이트 안내&nbsp;&nbsp;<span>2023-11-02</span></a></li>
+		                </ul>
+		                <ul class="gal_list">
+		                    <li><a href="#"><img src="image/design_chair1.jpg" alt="갤러리이미지"></a></li>
+		                    <li><a href="#"><img src="image/table_set1.jpg" alt="갤러리이미지"></a></li>
+		                    <li><a href="#"><img src="image/table_set2.jpg" alt="갤러리이미지"></a></li>
+		                </ul>
+		                
+			        </div>
+			    </div>
+			    
+			    <div class="con_box banner">
+			        <h2><a href="#">
+			        		<img src="image/contents_banner1.jpg" alt="배너">
+			        		<img class="banner_gif" src="image/all.gif" alt="배너gif">
+			        	</a>
+			        </h2>
+			    </div>
+			    
+			    <div class="con_box site">
+			        <h2><a href="#">바로가기</a></h2>
+			        <h3><a href="https://www.bodyfriend.co.kr/"><img src="image/conbox_site1.jpg" alt="site"></a></h3>
+			        <h3><a href="https://attrangs.co.kr/"><img src="image/conbox_site2.jpg" alt="site"></a></h3>
+			    </div>
+			</section>
+		</div>
+		
+		
+		<footer>
+		    <a href="shop.html" class="footer_logo"><img src="image/logo.jpg" alt="logo"></a>
+		    <span>Copyright All rights reserved.</span>
+		    <div class="snsIcon">
+		        <a href="https://www.instagram.com/"><img src="image/insta.png" alt="snsicon"></a>
+		        <a href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoia28ifQ%3D%3D%22%7D"><img src="image/twi.png" alt="snsicon" ></a>
+		        <a href="https://www.kakaocorp.com/page/"><img src="image/kaka.png" alt="snsicon" ></a>
+		    </div>
+		</footer>
+		
+         
+    </div>
+</body>
+</html>

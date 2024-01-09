@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Document</title>
+
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/productlist/nav_brand_header.css">
+<link rel="stylesheet" href="../css/productlist/section.css">
+<link rel="stylesheet" href="../css/footer.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+	    /* 헤더에 마우스를 올렸을 때 */
+	    $('header .gnb>li').mouseenter(function () {
+	        $('.sub').stop().slideDown();
+	    });
+	    $('header .gnb>li').mouseleave(function () {
+	        $('.sub').stop().slideUp();
+	    });
+		
+	 // 각 메뉴에 대한 데이터 구조
+	    var contentData = {
+	        '브랜드': {
+	            '디자이너 브랜드': {
+	                images: ['../image/nav_image/design1.png', '../image/nav_image/design2.png', '../image/nav_image/design3.png', '../image/nav_image/design4.png', '../image/nav_image/design5.png', '../image/nav_image/design6.png'],
+	    			summary: '디자이너 브랜드입니다.'
+	            },
+	            '스포츠 브랜드': {
+	                images: ['../image/nav_image/sports1.png', '../image/nav_image/sports2.png', '../image/nav_image/sports3.png', '../image/nav_image/sports4.png', '../image/nav_image/sports5.png',
+	                		 '../image/nav_image/sports6.png', '../image/nav_image/sports7.png', '../image/nav_image/sports8.png', '../image/nav_image/sports9.png'],
+	            	summary: '스포츠 브랜드입니다.'
+	            },
+	            'SPA 브랜드': {
+	                images: ['../image/nav_image/SPA1.png', '../image/nav_image/SPA2.png', '../image/nav_image/SPA3.png', '../image/nav_image/SPA4.png', '../image/nav_image/SPA5.png', '../image/nav_image/SPA6.png'],
+	                summary: 'SPA 브랜드입니다.'
+	            },
+	            '패션 브랜드': {
+	                images: ['../image/nav_image/passion1.png', '../image/nav_image/passion2.png', '../image/nav_image/passion3.png', '../image/nav_image/passion4.png', '../image/nav_image/passion5.png', '../image/nav_image/passion6.png'],
+	                summary: '패션 브랜드 온라인 스토어입니다.'
+	            }
+	        },
+	        '아우터상의': {
+	            '자켓': {
+	                images: ['../image/nav_image/jaket1.jpg', '../image/nav_image/jaket2.jpg', '../image/nav_image/jaket3.jpg', '../image/nav_image/jaket4.jpg', '../image/nav_image/jaket5.jpg', '../image/nav_image/jaket6.jpg'],
+	                summary: '자켓 상품입니다.'
+	            },
+	            '코트': {
+	                images: ['../image/nav_image/coat1.jpg', '../image/nav_image/coat2.jpg', '../image/nav_image/coat3.jpg', '../image/nav_image/coat4.jpg', '../image/nav_image/coat5.jpg', '../image/nav_image/coat6.jpg' ], 
+	                summary: '코트 상품입니다.'
+	            },
+	            '가디건': {
+	                images: ['../image/nav_image/cardigan1.jpg', '../image/nav_image/cardigan2.jpg', '../image/nav_image/cardigan3.jpg', '../image/nav_image/cardigan4.jpg', '../image/nav_image/cardigan5.jpg',
+	                	 	 '../image/nav_image/cardigan6.jpg','../image/nav_image/cardigan7.jpg', '../image/nav_image/cardigan8.jpg', '../image/nav_image/cardigan9.jpg'],
+	                summary: '가디건 상품입니다.'
+	            },
+	            '머플러': {
+	                images: ['../image/nav_image/muffler1.jpg', '../image/nav_image/muffler2.jpg', '../image/nav_image/muffler3.jpg', '../image/nav_image/muffler4.jpg', '../image/nav_image/muffler5.jpg', '../image/nav_image/muffler6.jpg'],
+	                summary: '머플러 상품입니다.'
+	            }
+	        },
+	        '하의': {
+	            '청바지': {
+	                images: ['../image/nav_image/jeans1.jpg', '../image/nav_image/jeans2.jpg' , '../image/nav_image/jeans3.jpg', '../image/nav_image/jeans4.jpg', '../image/nav_image/jeans5.jpg', '../image/nav_image/jeans6.jpg'],
+	                summary: '청바지 상품입니다.'
+	            },
+	            '짧은바지': {
+	                images: ['../image/nav_image/shortpants1.jpg', '../image/nav_image/shortpants2.jpg', '../image/nav_image/shortpants3.jpg', '../image/nav_image/shortpants4.jpg', '../image/nav_image/shortpants5.jpg', '../image/nav_image/shortpants6.jpg'],
+	                summary: '짧은바지 상품입니다.'
+	            },
+	            '긴바지': {
+	                images: ['../image/nav_image/longpants1.jpg', '../image/nav_image/longpants2.jpg', '../image/nav_image/longpants3.jpg', '../image/nav_image/longpants4.jpg', '../image/nav_image/longpants5.jpg', '../image/nav_image/longpants6.jpg'],
+	                summary: '긴바지 상품입니다.'
+	            },
+	            '레깅스': {
+	                images: ['../image/nav_image/leggings1.jpg', '../image/nav_image/leggings2.jpg', '../image/nav_image/leggings3.jpg', '../image/nav_image/leggings4.jpg', '../image/nav_image/leggings5.jpg', '../image/nav_image/leggings6.jpg'],
+	                summary: '레깅스 상품입니다.'
+	            }
+	        },
+	        '액세서리': {
+	            '귀고리': {
+	                images: ['../image/nav_image/earrings1.jpg', '../image/nav_image/earrings2.jpg', '../image/nav_image/earrings3.jpg'],
+	                summary: '귀고리 상품입니다.'
+	            },
+	            '목걸이': {
+	                images: ['../image/nav_image/necklace1.jpg', '../image/nav_image/necklace2.jpg', '../image/nav_image/necklace3.jpg', '../image/nav_image/necklace4.jpg', '../image/nav_image/necklace5.jpg', '../image/nav_image/necklace6.jpg'],
+	                summary: '목걸이 상품입니다.'
+	            },
+	            '반지': {
+	                images: ['../image/nav_image/ring1.jpg', '../image/nav_image/ring2.jpg', '../image/nav_image/ring3.jpg'],
+	                summary: '반지 상품입니다.'
+	            },
+	            '팔찌': {
+	                images: ['../image/nav_image/bracelet1.jpg', '../image/nav_image/bracelet2.jpg', '../image/nav_image/bracelet3.jpg', '../image/nav_image/bracelet4.jpg', '../image/nav_image/bracelet5.jpg',
+	               			 '../image/nav_image/bracelet6.jpg', '../image/nav_image/bracelet7.jpg', '../image/nav_image/bracelet8.jpg', '../image/nav_image/bracelet9.jpg'],
+	                summary: '팔찌 상품입니다.'
+	            }
+	        }
+	    };
+
+	    // 메뉴 아이템에 클릭 이벤트 리스너 추가
+	    $('header .gnb>li').click(function () {
+	        var selectedMenu = $(this).text(); // 클릭한 메뉴의 텍스트 가져오기
+
+	        console.log(selectedMenu); // 콘솔에 선택된 메뉴 출력
+
+	        // 선택된 메뉴가 contentData에 존재하는지 확인
+	        if (contentData.hasOwnProperty(selectedMenu)) {
+	            loadContent(selectedMenu);
+	        } else {
+	            console.error('Selected menu data not found.');
+	        }
+	    });
+
+	    // 서브 메뉴 아이템에 클릭 이벤트 리스너 추가
+	    $('header .sub>li').click(function () {
+	        var parentMenu = $(this).parent().prev().text(); // 상위 메뉴의 텍스트 가져오기
+	        var selectedSubMenu = $(this).text(); // 클릭한 서브 메뉴의 텍스트 가져오기
+
+	        console.log(parentMenu + ' - ' + selectedSubMenu); // 콘솔에 선택된 서브 메뉴 출력
+
+	        // 선택된 메뉴가 contentData에 존재하는지 확인
+	        if (contentData[parentMenu] && contentData[parentMenu].hasOwnProperty(selectedSubMenu)) {
+	            loadContent(parentMenu, selectedSubMenu);
+	        } else {
+	            console.error('Selected menu data not found.');
+	        }
+	    });
+
+	    
+	    function loadContent(menu, subMenu) {
+	        // 선택된 메뉴에 대한 데이터 가져오기
+	        var selectedData;
+
+	        if (subMenu) {
+	            // 서브 메뉴가 있는 경우
+	            selectedData = contentData[menu][subMenu];
+	        } else {
+	            // 메인 메뉴인 경우
+	            selectedData = contentData[menu];
+	        }
+
+	        // 이미지를 표시할 div 초기화
+	        $('.container').empty();
+
+	        // 선택된 메뉴에 'images' 속성이 존재하는지 확인
+	        if (selectedData && selectedData.images) {
+	            // 가져온 이미지들을 순회하면서 화면에 추가
+	            selectedData.images.forEach(function (imagePath) {
+	                var anchor = $('<a>').attr('href', 'https://www.musinsa.com/app/');
+	                var img = $('<img>').attr('src', imagePath);
+	                var span1 = $('<span>').text('');
+	                var span2 = $('<span>').addClass('price').text(selectedData.summary);
+	                anchor.append(img, span1, span2);
+	                $('.container').append(anchor);
+	            });
+	        } else {
+	            console.error('Selected menu data or images not found.');
+	        }
+	    }
+	});
+			
+   
+</script>
+</head>
+<body>
+    <div class="wrap">
+    
+    	<header>
+		    <h1>
+		        <a id= "header_a" href="../shop.html"><img src="../image/logo.jpg" alt="la_spordiva"></a>
+		    </h1>
+		
+			<nav>
+			    <ul class="gnb">
+			        <li><a href="nav_brand.html">브랜드</a>
+			            <ul class="sub">
+			                <li><a href="#">디자이너 브랜드</a></li>
+			                <li><a href="#">스포츠 브랜드</a></li>
+			                <li><a href="#">SPA 브랜드</a></li>
+			                <li><a href="#">패션 브랜드</a></li>
+			            </ul>
+			        </li>
+			        <li><a href="nav_brand.html">아우터상의</a>
+			            <ul class="sub">
+			                <li><a href="#">자켓</a></li>
+			                <li><a href="#">코트</a></li>
+			                <li><a href="#">가디건</a></li>
+			                <li><a href="#">머플러</a></li>
+			            </ul>
+			        </li>
+			        <li><a href="nav_brand.html">하의</a>
+			            <ul class="sub">
+			                <li><a href="#">청바지</a></li>
+			                <li><a href="#">짧은바지</a></li>
+			                <li><a href="#">긴바지</a></li>
+			                <li><a href="#">레깅스</a></li>
+			            </ul>
+			        </li>
+			        <li><a href="nav_brand.html">액세서리</a>
+			            <ul class="sub">
+			                <li><a href="#">귀고리</a></li>
+			                <li><a href="#">목걸이</a></li>
+			                <li><a href="#">반지</a></li>
+			                <li><a href="#">팔찌</a></li>
+			            </ul>
+			        </li>
+			    </ul>
+			</nav>
+		</header>
+		
+		<section>
+		
+			  <!-- 여러 이미지를 담을 수 있도록 여러 img 태그를 추가할 수 있는 div -->
+            <div class="container">
+				<a href="https://www.rileyyahr.com/">
+					<img src="../image/nav_image/abrand1.jpg">
+					<span>Riley Yahr Creative Studio</span>
+				</a>
+				
+				<a href="https://www.fendi.com/kr-ko/">
+					<img src="../image/nav_image/abrand2.jpg">
+					<span>Fendi</span>
+				</a>
+            
+            	<a href="https://www.domestika.org/pl/projects/87016-diseno-de-marca">
+					<img src="../image/nav_image/abrand3.jpg">
+					<span>Diseño de marca</span>
+				</a>
+				
+				<a href="https://shopbaileyandblush.com/">
+					<img src="../image/nav_image/abrand4.jpg">
+					<span>Bailey &amp; Blush Boutique</span>
+				</a>
+				
+				<a href="https://www.etsy.com/?zanpid=10690_1704682766_79103a5d3648d7d57331433dcb9b619b&utm_medium=affiliate&utm_source=affiliate_window&utm_campaign=row_buyer&utm_content=937449&sv1=affiliate&sv_campaign_id=937449&utm_term=0&awc=10690_1704682766_79103a5d3648d7d57331433dcb9b619b">
+					<img src="../image/nav_image/abrand5.jpg">
+					<span>Etsy</span>
+				</a>
+				
+				<a href="https://www.calvinklein.co.kr/ko/home/">
+					<img src="../image/nav_image/abrand6.jpg">
+					<span>Calvin klein</span>
+				</a>
+				
+				<a href="https://store-kr.uniqlo.com/">
+					<img src="../image/nav_image/SPA1.png">
+					<span>UNIQLO</span>
+				</a>
+				
+				<a href="https://www.zara.com/kr/">
+					<img src="../image/nav_image/SPA2.png">
+					<span>ZARA</span>
+				</a>
+				
+				<a href="https://spao.com/">
+					<img src="../image/nav_image/SPA3.png">
+					<span>SPAO</span>
+				</a>
+				
+				<a href="https://topten10.goodwearmall.com/main">
+					<img src="../image/nav_image/SPA4.png">
+					<span>TOPTEN10</span>
+				</a>
+				
+				<a href="https://www.inditex.com/itxcomweb/en/home">
+					<img src="../image/nav_image/SPA5.png">
+					<span>INDITEX</span>
+				</a>
+				
+				<a href="https://www.k-village.co.kr/eider">
+					<img src="../image/nav_image/SPA6.png">
+					<span>Eider</span>
+				</a>
+				
+				<a href="https://www.calvinklein.co.kr/ko/home/">
+					<img src="../image/nav_image/sports1.png">
+					<span>DYNAFIT</span>
+				</a>
+				
+				<a href="https://www.k-village.co.kr/">
+					<img src="../image/nav_image/sports2.png">
+					<span>JILLSTUART SPORT</span>
+				</a>
+				
+				<a href="https://www.nbkorea.com/index.action">
+					<img src="../image/nav_image/sports3.png">
+					<span>new balance</span>
+				</a>
+				
+				<a href="https://www.kappa.co.kr/main/today">
+					<img src="../image/nav_image/sports4.png">
+					<span>kappa</span>
+				</a>
+				
+				<a href="https://www.adidas.co.kr/">
+					<img src="../image/nav_image/sports5.png">
+					<span>adidas</span>
+				</a>
+				
+				<a href="https://ir.anta.com/en/index.php">
+					<img src="../image/nav_image/sports6.png">
+					<span>ANTA</span>
+				</a>
+				
+				<a href="https://spyder.co.kr/main/main">
+					<img src="../image/nav_image/sports7.png">
+					<span>SPYDER</span>
+				</a>
+				
+				<a href="https://creasmall.com/">
+					<img src="../image/nav_image/sports8.png">
+					<span>CREAS</span>
+				</a>
+				
+				<a href="https://www.underarmour.co.kr/ko-kr/">
+					<img src="../image/nav_image/sports9.png">
+					<span>UNDER ATMOUR</span>
+				</a>
+				
+				<a href="https://www.29cm.co.kr/home/">
+					<img src="../image/nav_image/passion1.png">
+					<span>29CM</span>
+				</a>
+				
+				<a href="https://www.tods.com/kr-ko/home/">
+					<img src="../image/nav_image/passion2.png">
+					<span>TOD's</span>
+				</a>
+				
+				<a href="https://www.facebook.com/Kookmin.Fashion.Magazine.Faavy/">
+					<img src="../image/nav_image/passion3.png">
+					<span>faavy</span>
+				</a>
+				
+				<a href="https://www.tbhshop.co.kr/main/">
+					<img src="../image/nav_image/passion4.png">
+					<span>MindBridge</span>
+				</a>
+				
+				<a href="https://www.mazel.or.kr/">
+					<img src="../image/nav_image/passion5.png">
+					<span>MAZEL</span>
+				</a>
+				
+				<a href="https://shezbycoco.kr/">
+					<img src="../image/nav_image/passion6.png">
+					<span>SHEZBYCOCO</span>
+				</a>
+				
+            </div>
+			
+		</section>
+		
+		<footer>
+		
+		    <a href="../shop.html" class="footer_logo"><img src="../image/logo.jpg" alt="logo"></a>
+		    <span>Copyright All rights reserved.</span>
+		    <div class="snsIcon">
+		        <a href="https://www.instagram.com/"><img src="../image/insta.png" alt="snsicon"></a>
+		        <a href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoia28ifQ%3D%3D%22%7D"><img src="../image/twi.png" alt="snsicon" ></a>
+		        <a href="https://www.kakaocorp.com/page/"><img src="../image/kaka.png" alt="snsicon" ></a>
+		    </div>
+		
+		</footer>
+		
+         
+    </div>
+</body>
+</html>

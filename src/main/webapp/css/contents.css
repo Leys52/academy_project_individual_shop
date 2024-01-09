@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#contents {
+	width: 1200px;
+	height: 200px;
+}
+
+.con_box {
+	/* 콘텐츠 영역 공통 속성 */
+	width: 33.32%;
+	height: 200px;
+	float: left;
+	position: relative;
+}
+
+.notice_gall a {
+	width: 100%;
+	display: block;
+}
+
+.notice_gall h3,
+.notice_gall ul {
+	position: absolute;
+}
+
+.notice_gall h3 {
+	/* 공지사항 탭 버튼 */
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.notice_gall h3.button2 {
+	/* 갤러리 탭 버튼 */
+	left: 100px;
+}
+
+.notice_gall h3.on {
+	background-color: #64cbe5;
+	color: #ffffff;	
+}
+
+.notice_gall ul {
+	width: 100%;
+	height: 160px;
+	top: 40px;
+	left: 0;
+	display: none;
+	padding: 10px;
+}
+
+.notice_gall ul.block {
+	display: block;
+}
+
+.notice_list_block li {
+	/* 공지사항 탭 */
+	padding-bottom: 8px;
+}
+
+.notice_list li a:hover {
+	font-weight: bold;
+}
+
+.notice_list_block li a span {
+	position: absolute;
+	right: 10px;
+}
+
+.gal_list li {
+	/* 갤러리 탭 */
+	float: left;
+	padding: 3px;
+}
+
+.gal_list li img {
+	width: 110px;
+	height: auto;
+}
+
+.gal_list li img:hover {
+	filter: blur(3px);
+	-webkit-filter: blur(3px);
+}
+
+/* 배너 탭 */
+.banner a img{
+	width: 200px;
+	height: 169px;
+}
+
+.site h2 {
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	text-align: center;
+}
+
+/* 바로가기 탭 */
+.site h3 {
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	text-align: center;
+}
+.site h3 img {
+	max-width: 300px;
+	height: 74px;
+	line-height: 70px;
+	margin: 8px 0;
+	font-weight: normal;
+}
+/* 바로가기의 이미지를 올리면 제일 위로 올리기 */
+.site h3 a img:hover{
+  position: absolute;
+  z-index: 3;  /* 또는 다른 충분히 큰 값 */
+}

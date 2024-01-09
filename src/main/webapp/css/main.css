@@ -1,0 +1,30 @@
+@charset "UTF-8";
+/* 초기화 */
+*{
+    margin: 0;
+    padding: 0;    
+    box-sizing: border-box;
+    color: #333333;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+img{
+    vertical-align: top;
+    border: 0;
+}
+.cf:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* wrap */
+.wrap{
+    width: 1200px;
+    margin: 0 auto;
+}

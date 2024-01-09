@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+#slide{
+    width: 1200px;
+    height: 300px;
+    overflow: hidden;
+}
+.slide_list{
+    width: 1200px;
+    height: 900px;
+    position: relative;
+}
+.slide_list li{
+    position: relative;
+}

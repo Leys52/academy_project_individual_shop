@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+header{
+    width: 1200px;
+    height: 100px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* nav 전체 */
+header nav{
+    width: 600px;
+    float: right;
+    margin-top: 30px;
+}
+header nav li{
+    height: 40px;
+    line-height: 40px;
+}
+header nav a{
+    display: block;
+    font-size: 18px;
+}
+
+/*메인 메뉴*/
+header .gnb>li{ 
+    width: 25%;
+    float: left;
+    background: #eee;
+    font-weight: bold;
+}
+
+/*서브메뉴*/
+header .sub{ 
+    width: 100%;
+    height: 160px;
+    background:#A89984;
+    display: none;
+}
+header .sub li{
+    width: 100%;
+}
